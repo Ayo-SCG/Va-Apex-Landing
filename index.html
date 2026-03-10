@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VA Apex Attendees | Ayo Strategic Consulting Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-teal: #5E8894;
+            --deep-green: #60870C;
+            --gold: #D4A017;
+            --warm-red: #C55A5A;
+            --light-neutral: #f5f7fa;
+            --medium-neutral: #e4e8ec;
+            --dark-text: #1a2a2f;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--light-neutral);
+            color: var(--dark-text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-bar {
+            background: var(--primary-teal);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .header-bar p {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary-teal) 0%, #4a7280 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .main-content {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .offer-card {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 24px rgba(94, 136, 148, 0.12);
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 1px solid var(--medium-neutral);
+        }
+        .offer-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+        .price-display {
+            margin-bottom: 2rem;
+        }
+        .original-price {
+            font-size: 1.1rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
+        }
+        .free-price {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--deep-green);
+        }
+        .for-attendees {
+            font-size: 1rem;
+            color: var(--primary-teal);
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+        .session-details {
+            background: var(--light-neutral);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .session-details h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            color: var(--primary-teal);
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            padding: 1.25rem 3rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(212, 160, 23, 0.35);
+        }
+        .cta-button:hover {
+            background: #c4920f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 160, 23, 0.45);
+        }
+        .about-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(94, 136, 148, 0.08);
+            border: 1px solid var(--medium-neutral);
+        }
+        .about-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+        .about-section p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .about-section p:last-child {
+            margin-bottom: 0;
+        }
+        .footer {
+            background: var(--dark-text);
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+        .footer a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--gold);
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .main-content {
+                padding: 2rem 1.25rem;
+            }
+            .offer-card {
+                padding: 2rem 1.5rem;
+            }
+            .offer-card h2 {
+                font-size: 1.6rem;
+            }
+            .free-price {
+                font-size: 2rem;
+            }
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+            }
+            .about-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .offer-card {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        .about-section {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="header-bar">
+            <p>Exclusive Offer for Virginia Apex Accelerator Attendees</p>
+        </div>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">March 3, 2026 Training</span>
+                <h1>Thank You for Attending Today's Session</h1>
+                <p>Ready to take the next step in your federal contracting journey? Book your complimentary strategy session.</p>
+            </div>
+        </section>
+        <main class="main-content">
+            <div class="offer-card">
+                <h2>One-Hour Strategy Session with Danit Johnson</h2>
+
+                <div class="price-display">
+                    <p class="original-price">Normally $250</p>
+                    <p class="free-price">FREE</p>
+                    <p class="for-attendees">For VA Apex Attendees Only</p>
+                </div>
+                <div class="session-details">
+                    <h3>What You Will Get</h3>
+                    <div class="detail-item">
+                        <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Review of your current federal contracting position and goals</span>
+                    </div>
+                    <div class="detail-item">
+                        <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Assessment of your readiness to pursue federal opportunities</span>
+                    </div>
+                    <div class="detail-item">
+                        <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Personalized recommendations for your next steps</span>
+                    </div>
+                    <div class="detail-item">
+                        <svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Honest feedback on your competitive positioning</span>
+                    </div>
+                </div>
+                <a href="https://outlook.office.com/bookwithme/user/8147c5504e454fb7b02336bafa119d05@ayoscg.com/meetingtype/p8SQL4hFVkypplZ2OWbMrA2?anonymous&ismsaljsauthenabled&ep=mlink" class="cta-button">
+                    Book Your Free Session
+                </a>
+            </div>
+            <div class="about-section">
+                <h3>About Ayo Strategic Consulting Group</h3>
+                <p>Ayo Strategic Consulting Group is a boutique capture management consulting firm that helps small and midsize government contractors win more federal contracts. We provide fractional capture management, proposal writing, and strategic consulting services.</p>
+                <p>Our founder, Danit Johnson, brings deep expertise in federal procurement and a commitment to helping businesses that have been historically underrepresented in government contracting navigate the path to success.</p>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2026 Ayo Strategic Consulting Group. All rights reserved.</p>
+            <p style="margin-top: 0.5rem;"><a href="https://www.ayoscg.com">www.ayoscg.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
